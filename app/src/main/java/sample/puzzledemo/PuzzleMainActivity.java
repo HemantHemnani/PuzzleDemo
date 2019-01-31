@@ -25,8 +25,6 @@ public class PuzzleMainActivity extends AppCompatActivity {
     private int MAX_COLUMN_COUNT= 0 ;
     private ActivityPuzzleMainBinding mBinding;
     private ArrayList<RowColBean> mRowColList;
-    private ArrayList<RowColBean> mRowColList2;
-//    private int tempCol = 0;
     private HashMap<Integer, ArrayList<RowColBean>> mRowHashMap;
 
     @Override
@@ -58,9 +56,9 @@ public class PuzzleMainActivity extends AppCompatActivity {
     * show the result
     * */
     private void resultClick(View view) {
-        getMaxSandAreaRow();
+        getMaxFormAreaRow();
         if(rowhighValueIndex>0) {
-            resetGridView2();
+            getMaxFormArea();
         }
     }
 
@@ -111,10 +109,10 @@ public class PuzzleMainActivity extends AppCompatActivity {
     /*
     * get max sand area
     * */
-    private void getMaxSandAreaRow() {
+    private void getMaxFormAreaRow() {
         int hashMapIndex2 = 1;
         mRowHashMap = new HashMap<>();
-        mRowColList2 = new ArrayList<>();
+        mRowColList = new ArrayList<>();
 
         for (int i = 0; i < field.length; i++) {
 //            tempCol = 0;
@@ -123,25 +121,25 @@ public class PuzzleMainActivity extends AppCompatActivity {
                 if (field[i][j] == 1) {
                     if (mRowHashMap.size() == 0) {
 
-                        mRowColList2.add(new RowColBean(i, j));
-                        mRowHashMap.put(hashMapIndex2, mRowColList2);
+                        mRowColList.add(new RowColBean(i, j));
+                        mRowHashMap.put(hashMapIndex2, mRowColList);
 //                        tempCol ++;
                     } else {
 
                         //get index of hashmap value for arraylist
                         if (getHashIndexRow2(i,j) != -1) {
-                            mRowColList2 = getlist2((getHashIndexRow2(i,j)));
+                            mRowColList = getlist2((getHashIndexRow2(i,j)));
                         } else {
-                            mRowColList2 = new ArrayList<>();
+                            mRowColList = new ArrayList<>();
                         }
-                        mRowColList2.add(new RowColBean(i, j));
+                        mRowColList.add(new RowColBean(i, j));
 
                         //save same arraylist at correct index
                         if (getHashIndexRow2(i,j) != -1) {
-                            mRowHashMap.put(getHashIndexRow2(i,j), mRowColList2);
+                            mRowHashMap.put(getHashIndexRow2(i,j), mRowColList);
                         } else {
                             hashMapIndex2++;
-                            mRowHashMap.put(hashMapIndex2, mRowColList2);
+                            mRowHashMap.put(hashMapIndex2, mRowColList);
                         }
                     }
                 } else if (field[i][j] == 0) {
@@ -153,22 +151,22 @@ public class PuzzleMainActivity extends AppCompatActivity {
                    if (field[i-1][j] == 1)
                     {
                         if (getHashIndexRow2(i, j) != -1) {
-                            mRowColList2 = getlist2((getHashIndexRow2(i, j)));
-                            mRowColList2.add(new RowColBean(i - 1, j));
-                            mRowHashMap.put(getHashIndexRow2(i, j), mRowColList2);
+                            mRowColList = getlist2((getHashIndexRow2(i, j)));
+                            mRowColList.add(new RowColBean(i - 1, j));
+                            mRowHashMap.put(getHashIndexRow2(i, j), mRowColList);
 
                             if (j<MAX_COLUMN_COUNT-1 && field[i-1][j+1] == 1 && getHashIndexRow2(i, j) != -1)
                             {
-                                mRowColList2 = getlist2((getHashIndexRow2(i, j)));
-                                mRowColList2.add(new RowColBean(i - 1, j+1));
-                                mRowHashMap.put(getHashIndexRow2(i, j), mRowColList2);
+                                mRowColList = getlist2((getHashIndexRow2(i, j)));
+                                mRowColList.add(new RowColBean(i - 1, j+1));
+                                mRowHashMap.put(getHashIndexRow2(i, j), mRowColList);
                             }
 
                             if (j>0 && j<=MAX_COLUMN_COUNT-1 && field[i-1][j-1] == 1 && getHashIndexRow2(i, j) != -1)
                             {
-                                mRowColList2 = getlist2((getHashIndexRow2(i, j)));
-                                mRowColList2.add(new RowColBean(i - 1, j-1));
-                                mRowHashMap.put(getHashIndexRow2(i, j), mRowColList2);
+                                mRowColList = getlist2((getHashIndexRow2(i, j)));
+                                mRowColList.add(new RowColBean(i - 1, j-1));
+                                mRowHashMap.put(getHashIndexRow2(i, j), mRowColList);
                             }
                         }
                     }
@@ -176,30 +174,30 @@ public class PuzzleMainActivity extends AppCompatActivity {
 
                 if(i>0 && i<MAX_ROW_COUNT-1) {
                     if (field[i+1][j] == 1 &&  (getHashIndexRow2(i, j) != -1) ){
-                        mRowColList2 = getlist2((getHashIndexRow2(i, j)));
-                        mRowColList2.add(new RowColBean(i+1, j));
-                        mRowHashMap.put(getHashIndexRow2(i, j), mRowColList2);
+                        mRowColList = getlist2((getHashIndexRow2(i, j)));
+                        mRowColList.add(new RowColBean(i+1, j));
+                        mRowHashMap.put(getHashIndexRow2(i, j), mRowColList);
                     }
                 }
 
                 if(( j==0 || j<MAX_COLUMN_COUNT-1)  &&  (getHashIndexRow2(i, j) != -1)) {
                     if (field[i][j+1] == 1){
-                        mRowColList2 = getlist2((getHashIndexRow2(i, j)));
-                        mRowColList2.add(new RowColBean(i, j+1));
-                        mRowHashMap.put(getHashIndexRow2(i, j), mRowColList2);
+                        mRowColList = getlist2((getHashIndexRow2(i, j)));
+                        mRowColList.add(new RowColBean(i, j+1));
+                        mRowHashMap.put(getHashIndexRow2(i, j), mRowColList);
                     }
                 }
 
                 if(( j>0 && j<=MAX_COLUMN_COUNT-1)  &&  (getHashIndexRow2(i, j) != -1)) {
                     if (field[i][j-1] == 1){
-                        mRowColList2 = getlist2((getHashIndexRow2(i, j)));
-                        mRowColList2.add(new RowColBean(i, j-1));
-                        mRowHashMap.put(getHashIndexRow2(i, j), mRowColList2);
+                        mRowColList = getlist2((getHashIndexRow2(i, j)));
+                        mRowColList.add(new RowColBean(i, j-1));
+                        mRowHashMap.put(getHashIndexRow2(i, j), mRowColList);
 
                         if (j>=2 && field[i][j-2] == 1){
-                            mRowColList2 = getlist2((getHashIndexRow2(i, j)));
-                            mRowColList2.add(new RowColBean(i, j-2));
-                            mRowHashMap.put(getHashIndexRow2(i, j), mRowColList2);
+                            mRowColList = getlist2((getHashIndexRow2(i, j)));
+                            mRowColList.add(new RowColBean(i, j-2));
+                            mRowHashMap.put(getHashIndexRow2(i, j), mRowColList);
                         }
                     }
                 }
@@ -253,7 +251,7 @@ public class PuzzleMainActivity extends AppCompatActivity {
     /*
     * show the largest sand area
     * */
-    private void resetGridView2() {
+    private void getMaxFormArea() {
         ArrayList<RowColBean> mMaxSandAreaList = new ArrayList<>();
             mBinding.llVertical.removeAllViews();
             mMaxSandAreaList = mRowHashMap.get(rowhighValueIndex);
