@@ -32,8 +32,9 @@ public class PuzzleMainActivity extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         mBinding = DataBindingUtil.setContentView(this, R.layout.activity_puzzle_main);
         getControls();
-        mBinding.btnResult.setOnClickListener(this::resultClick);
-        mBinding.btnDrawPuzzle.setOnClickListener(this::drawPuzzleclick);
+        mBinding.btnSolveForm.setOnClickListener(this::resultClick);
+        mBinding.btnGeneratePuzzle.setOnClickListener(this::drawPuzzleclick);
+        mBinding.btnGeneratePuzzle.setSelected(false);
     }
 
     private void getControls()
@@ -45,6 +46,12 @@ public class PuzzleMainActivity extends AppCompatActivity {
     * draw puzzle with random values
     * */
     private void drawPuzzleclick(View view) {
+        mBinding.btnGeneratePuzzle.setSelected(true);
+        mBinding.btnGeneratePuzzle.setClickable(false);
+        mBinding.btnGeneratePuzzle.setEnabled(false);
+        mBinding.btnSolveForm.setClickable(true);
+        mBinding.btnSolveForm.setEnabled(true);
+        mBinding.btnSolveForm.setSelected(false);
         generateRandomNumbers();
         if (mBinding.llVertical != null && mBinding.llVertical.getChildCount() > 0)
             mBinding.llVertical.removeAllViews();
@@ -56,6 +63,13 @@ public class PuzzleMainActivity extends AppCompatActivity {
     * show the result
     * */
     private void resultClick(View view) {
+        mBinding.btnGeneratePuzzle.setClickable(true);
+        mBinding.btnGeneratePuzzle.setEnabled(true);
+        mBinding.btnGeneratePuzzle.setSelected(false);
+        mBinding.btnSolveForm.setClickable(false);
+        mBinding.btnSolveForm.setEnabled(false);
+        mBinding.btnSolveForm.setSelected(true);
+
         getMaxFormAreaRow();
         if(rowhighValueIndex>0) {
             getMaxFormArea();

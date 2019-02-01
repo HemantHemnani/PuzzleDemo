@@ -1,10 +1,12 @@
 <?xml version="1.0" encoding="utf-8"?>
 <resources>
-    <color name="colorPrimary">#008577</color>
-    <color name="colorPrimaryDark">#00574B</color>
-    <color name="colorAccent">#D81B60</color>
+    <color name="colorPrimary">#851200</color>
+    <color name="colorPrimaryDark">#570d00</color>
+    <color name="colorAccent">#b9471e</color>
     <color name="water">#c0c0c0</color>
-    <color name="land">#22b2b2</color>
-    <color name="fill">#1212b2</color>
-
+    <color name="land">#e77d48</color>
+    <color name="fill">#228102</color>
+    <color name="white">#ffffff</color>
+    <color name="blue">#2c44ca</color>
+    <color name="grey">#c4c4c4</color>
 </resources>

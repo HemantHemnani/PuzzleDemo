@@ -1,3 +1,7 @@
 <resources>
     <string name="app_name">PuzzleDemo</string>
+    <string name="Generate_Puzzle">Generate Puzzle</string>
+    <string name="Solve_Big_Farm">Solve Big Farm</string>
+
+
 </resources>

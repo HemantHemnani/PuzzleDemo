@@ -10,36 +10,41 @@
         <Button
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:id="@+id/btn_draw_puzzle"
-            android:text="Draw"
-            android:padding="5dp"
-            android:layout_margin="10dp"
+            android:id="@+id/btn_generate_puzzle"
+            android:text="@string/Generate_Puzzle"
+            android:padding="15dp"
+            android:layout_margin="15dp"
+            android:background="@drawable/button_effect"
+            android:textColor="@color/white"
             android:layout_gravity="center_horizontal"
             android:gravity="center"
 
             />
 
     <LinearLayout
-        android:layout_width="match_parent"
+        android:layout_width="wrap_content"
         android:layout_height="wrap_content"
+        android:layout_marginTop="15dp"
+        android:layout_marginBottom="15dp"
         android:orientation="vertical"
+        android:layout_gravity="center_horizontal"
+        android:gravity="center_horizontal"
         android:id="@+id/ll_vertical"
         >
-
-
 
     </LinearLayout>
 
         <Button
+            android:background="@drawable/button_effect"
+            android:textColor="@color/white"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:id="@+id/btn_result"
-            android:text="Result"
-            android:padding="5dp"
-            android:layout_margin="10dp"
+            android:id="@+id/btn_solve_form"
+            android:text="@string/Solve_Big_Farm"
+            android:padding="15dp"
+            android:layout_margin="20dp"
             android:layout_gravity="center_horizontal"
             android:gravity="center"
-
             />
 
     </LinearLayout>
